@@ -11006,17 +11006,50 @@ html {
 }
 .portfolio .portfolio-item .portfolio-item-caption {
   position: absolute;
-  top: 0;
-  left: 0;
-  transition: all 0.2s ease-in-out;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: opacity 0.25s ease-in-out, transform 0.25s ease-in-out;
   opacity: 0;
-  background-color: rgba(26, 188, 156, 0.9);
+  transform: scale(0.98);
+  background: rgba(2, 20, 40, 0.78);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  z-index: 2;
 }
-.portfolio .portfolio-item .portfolio-item-caption:hover {
+.portfolio .portfolio-item:hover .portfolio-item-caption {
   opacity: 1;
+  transform: scale(1);
 }
 .portfolio .portfolio-item .portfolio-item-caption .portfolio-item-caption-content {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 4rem;
+  height: 4rem;
+  border-radius: 50%;
   font-size: 1.5rem;
+  color: #fff;
+  background: rgba(255, 255, 255, 0.14);
+  border: 1px solid rgba(255, 255, 255, 0.28);
+  box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.08), 0 0 0 1px rgba(0, 86, 179, 0.20);
+  transition: transform 0.3s ease, background 0.3s ease, box-shadow 0.3s ease, opacity 0.3s ease;
+  animation: pulseButton 1.8s ease-in-out infinite;
+}
+.portfolio .portfolio-item:hover .portfolio-item-caption .portfolio-item-caption-content {
+  transform: scale(1.1);
+  background: rgba(255, 255, 255, 0.22);
+  box-shadow: 0 0 0 1px rgba(0, 86, 179, 0.35), 0 12px 30px rgba(0, 86, 179, 0.20);
+}
+
+@keyframes pulseButton {
+  0%, 100% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.08);
+  }
 }
 
 .portfolio-modal .btn-close {
