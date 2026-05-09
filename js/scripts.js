@@ -51,4 +51,26 @@ window.addEventListener('DOMContentLoaded', event => {
         });
     });
 
+    // --- Custom Animations ---
+    // Create an intersection observer for scroll animations
+    const observerOptions = {
+        root: null,
+        rootMargin: '0px',
+        threshold: 0.15
+    };
+
+    const observer = new IntersectionObserver((entries, observer) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('visible');
+                // Optional: unobserve if you only want to animate once
+                observer.unobserve(entry.target);
+            }
+        });
+    }, observerOptions);
+
+    // Select elements to animate
+    const animatedElements = document.querySelectorAll('.fade-in, .slide-up');
+    animatedElements.forEach(el => observer.observe(el));
+
 });
